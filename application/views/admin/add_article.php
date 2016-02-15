@@ -1,7 +1,7 @@
 <?php include_once('admin_header.php'); ?>
 
 <div class="container">
-	<?php echo form_open('admin/store_article', ['class'=>'form-horizontal']) ?>
+	<?php echo form_open_multipart('admin/store_article', ['class'=>'form-horizontal']) ?>
 	<?php echo form_hidden('user_id', $this->session->userdata('user_id')); ?>
   <?= form_hidden('created_at', date('Y-m-d H:i:s')) ?>
   <fieldset>
@@ -31,6 +31,20 @@
       </div>
       <div class="col-lg-6">
         <?php echo form_error('body'); ?>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+      <label for="inputEmail" class="col-lg-4 control-label">Select Image</label>
+      <div class="col-lg-8">
+
+      <?php echo form_upload(['name'=>'image','class'=>'form-control']); ?>
+      </div>
+    </div>
+      </div>
+      <div class="col-lg-6">
+        <?php if(isset($upload_error)) echo $upload_error ?>
       </div>
     </div>
     <div class="form-group">
